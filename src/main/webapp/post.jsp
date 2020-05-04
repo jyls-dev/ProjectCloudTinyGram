@@ -134,6 +134,10 @@
 		                }
 		            })
 		    },
+		    deleteAll: function() {
+		     	var url="http://localhost:8080/prefixcleanuser"
+		     		window.location = url;
+		    },
 		    postMessage: function() {
 		        var data = {
 		            'owner': me,
@@ -210,8 +214,15 @@
 		                        }
 		                    },
 		                    "Accéder aux Posts suivants"),
+		                m('button', {
+	                      		class: 'btn btn-outline-danger',
+		                 	    onclick: function(e) {
+		                       		MyPost.deleteAll()
+		                    	}
+		                	},
+		                    "Supprimer tout les posts"),
 		                    
-		                    m('button', {
+		                m('button', {
 	                        	class: 'btn btn-outline-secondary',
 		                        onclick: function(e) {
 		                        	location.href = "/view";
