@@ -5,14 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>View Compte</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=1">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<meta charset="utf-8" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mon profil</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 </head>
 <body>
 
@@ -49,7 +53,7 @@
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item dropdown col-md-5">
 							<div class="center" >
-								<a class="btn btn-outline-secondary my-2 my-sm-0" href="/profil">Accéder
+								<a class="btn btn-outline-secondary my-2 my-sm-0 disabled active" href="/profil">Accéder
 									à mon profil</a>
 							</div>
 						</li>
@@ -72,26 +76,332 @@
 
 		</section>
 
-		<div class="jumbotron">
-			<h1 class="display-3">Bienvenue sur Cloud Tiny Gram !</h1>
-			<p class="lead">C'est ici que seront affichés les photos publiées
-				par l'ensemble de vos amis.</p>
-			<hr class="my-4">
-		</div>
 
-
-		<section class="mbr-section content4 cid-rX0kNznRqd" id="content4-3"></section>
+		<section class="mbr-section content4 cid-rX0kNznRqd" id="content4-2"></section>
 
 		<div class="container">
 			<div class="media-container-row">
 				<div class="title col-12 col-md-8">
-					<h2 class="align-center pb-3 mbr-fonts-style display-2">Liste
-						Utilisateurs à suivre</h2>
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h1 class="card-title">
+								Mes informations
+								</h1>
+								<p class="card-text">C'est ici que vous retrouverez
+									l'ensemble des informations liées à votre compte.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Mon adresse mail
+								</h5>
+								<p class="card-text"><%=connect.getEmailUser()%></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Mon pseudo Cloud Tiny Gram
+								</h5>
+								<p class="card-text"><%=connect.getNicknameUser()%></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Le nombre de personnes que je suit
+								</h5>
+								<p class="card-text">Ici nombre de personnes suivies</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Le nombre de personnes qui me suivent
+								</h5>
+								<p class="card-text">Ici nombre de personnes qui me suivent</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Le nombre total de photos que j'ai posté
+								</h5>
+								<p class="card-text">Ici nombre total de photos que j'ai posté</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		</section>
+
+		<section class="mbr-section content4 cid-rX0kNznRqd" id="content4-2"></section>
+
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h1 class="card-title">
+								Mes Posts
+								</h1>
+								<p class="card-text">C'est ici que vous retrouverez
+									l'ensemble des postes que vous avez publié.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</section>
+		
+		<script>
+
+		// for the example
+		var me = "<%=connect.getNicknameUser()%>"
+
+		var PostForm = {
+		    url: "",
+		    body: "",
+		    view: function() {
+		        return m("form", {
+		                onsubmit: function(e) {
+		                    e.preventDefault()
+		                    if (url = "") {
+		                        url = "https://dummyimage.com/320x200/000/fff&text=" + Date.now()
+		                    }
+		                    if (body = "") {
+		                        body = "bla bla bla \n" + Date.now()
+		                    }
+		                    MyPost.postMessage()
+		                }
+		            },
+		            [
+		                m('div', {
+		                    class: 'field'
+		                }, [
+		                    m("label", {
+		                        class: 'label'
+		                    }, "URL"),
+		                    m('div', {
+		                        class: 'control'
+		                    }, m("input[type=text]", {
+		                        class: 'input is-rounded',
+		                        placeholder: "Your url",
+		                        oninput: function(e) {
+		                            PostForm.url = e.target.value
+		                        }
+		                    })),
+		                    // m("img",{"src":this.url}),
+		                ]),
+		                m('div', {
+		                    class: 'field'
+		                }, [
+		                    m("label", {
+		                        class: 'label'
+		                    }, "Body"),
+		                    m('div', {
+		                        class: 'control'
+		                    }, m("input[type=textarea]", {
+		                        class: 'textarea',
+		                        placeholder: "your text",
+		                        oninput: function(e) {
+		                            PostForm.body = e.target.value
+		                        }
+		                    })),
+		                ]),
+		                m('div', {
+		                    class: 'control'
+		                }, m("button[type=submit]", {
+		                    class: 'button is-link'
+		                }, "Post")),
+		            ])
+		    }
+		}
+
+
+		var MyPost = {
+		    list: [],
+		    nextToken: "",
+		    loadList: function() {
+		        return m.request({
+		                method: "GET",
+		                url: "_ah/api/myApi/v1/mypost/" + me
+		            })
+		            .then(function(result) {
+		                console.log("got:", result)
+		                MyPost.list = result.items
+		                if ('nextPageToken' in result) {
+		                    MyPost.nextToken = result.nextPageToken
+		                } else {
+		                    MyPost.nextToken = ""
+		                }
+		            })
+		    },
+		    next: function() {
+		        return m.request({
+		                method: "GET",
+		                url: "_ah/api/myApi/v1/mypost/" + me + "?next=" + MyPost.nextToken
+		            })
+		            .then(function(result) {
+		                console.log("got:", result)
+		                result.items.map(function(item) {
+		                    MyPost.list.push(item)
+		                })
+		                if ('nextPageToken' in result) {
+		                    MyPost.nextToken = result.nextPageToken
+		                } else {
+		                    MyPost.nextToken = ""
+		                }
+		            })
+		    },
+		    postMessage: function() {
+		        var data = {
+		            'owner': me,
+		            'url': PostForm.url,
+		            'body': PostForm.body
+		        }
+		        console.log("post:" + data)
+		        return m.request({
+		                method: "POST",
+		                url: "_ah/api/myApi/v1/postMessage",
+		                params: data,
+		            })
+		            .then(function(result) {
+		                console.log("got:", result),
+		                    MyPost.loadList()
+		            })
+		    }
+		}
+
+		var PostView = {
+		    oninit: MyPost.loadList,
+		    view: function() {
+		        return m('div', [
+		            m('div', {
+		                class: 'subtitle'
+		            }, "My Posts"),
+		            m('table', {
+		                class: 'table is-striped',
+		                "table": "is-striped"
+		            }, [
+		                m('tr', [
+		                    m('th', {
+		                        width: "50px"
+		                    }, "like"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "del"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "Bodys"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "Urls"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "Like"),
+		                ]),
+		                MyPost.list.map(function(item) {
+		                    return m("tr", [
+		                        m("td", m("button", {
+		                            onclick: function(e) {
+		                                console.log("like:" + item.key.id)
+		                            }
+		                        }, "like")),
+		                        m("td", m("button", {
+		                            onclick: function(e) {
+		                                console.log("del:" + item.key.id)
+		                            }
+		                        }, "del")),
+		                        m('td', m('label', item.properties.body)),
+		                        m('td', m('img', {
+		                            class: 'is-rounded',
+		                            'src': item.properties.url
+		                        })),
+		                        m('td', m('label', item.properties.likec)),
+		                    ])
+		                }),
+		                // m("div", isError ? "An error occurred" : "Saved"),
+		                m('button', {
+		                        class: 'button is-link',
+		                        onclick: function(e) {
+		                            MyPost.next()
+		                        }
+		                    },
+		                    "Next"),
+		            ])
+		        ])
+		    }
+		}
+
+		var Hello = {
+		    view: function() {
+		        return m('div', {
+		            class: 'container'
+		        }, [
+		            m("h1", {
+		                class: 'title'
+		            }, 'The TinyGram Post'),
+		            m('div', {
+		                class: 'tile is-ancestor'
+		            }, [
+		                m("div", {
+		                    class: 'tile'
+		                }, m('div', {
+		                    class: 'tile is-child box'
+		                }, m(PostForm))),
+		                m("div", {
+		                    class: 'tile'
+		                }, m('div', {
+		                    class: 'tile is-child box'
+		                }, m(PostView))),
+		            ])
+		        ])
+		    }
+		}
+
+
+		m.mount(document.body, Hello)
+
+</script>
 
 	</c:if>
 
@@ -2702,6 +3012,7 @@ html, body {
 	color: #767676;
 }
 </style>
+
 
 </html>
 
