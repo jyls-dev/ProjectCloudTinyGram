@@ -40,18 +40,11 @@
 		var me = "<%=connect.getNicknameUser()%>"
 
 		var PostForm = {
-		    url: "",
-		    body: "",
+		    url: "https://www.iconsdb.com/icons/preview/red/error-6-xxl.png",
+		    body: "Image sans texte",
 		    view: function() {
 		        return m("form", {
 		                onsubmit: function(e) {
-		                    e.preventDefault()
-		                    if (url = "") {
-		                        url = "https://dummyimage.com/320x200/000/fff&text=" + Date.now()
-		                    }
-		                    if (body = "") {
-		                        body = "bla bla bla \n" + Date.now()
-		                    }
 		                    MyPost.postMessage()
 		                }
 		            },
@@ -138,6 +131,10 @@
 		     	var url="http://localhost:8080/prefixcleanuser"
 		     		window.location = url;
 		    },
+		    deletePost: function(e) {
+		     	var url="http://localhost:8080/prefixcleanpost?post=" + e
+		     		window.location = url;
+		    },
 		    postMessage: function() {
 		        var data = {
 		            'owner': me,
@@ -197,6 +194,7 @@
 		                        	class: 'btn btn-outline-danger',
 		                            onclick: function(e) {
 		                                console.log("del:" + item.key.id)
+		                                MyPost.deletePost(item.key.id);
 		                            }
 		                        }, "Supprimer")),
 		                        m('td', m('label', item.properties.body)),
