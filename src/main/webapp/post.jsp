@@ -132,7 +132,7 @@
 		     		window.location = url;
 		    },
 		    deletePost: function(e) {
-		     	var url="http://localhost:8080/prefixcleanpost?post=" + e
+		    	var url="http://localhost:8080/prefixcleanpost/" + e
 		     		window.location = url;
 		    },
 		    postMessage: function() {

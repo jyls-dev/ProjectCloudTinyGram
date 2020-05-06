@@ -25,6 +25,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.PropertyProjection;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
+import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 
@@ -32,7 +33,7 @@ import com.google.appengine.repackaged.com.google.datastore.v1.CompositeFilter;
 import com.google.appengine.repackaged.com.google.datastore.v1.Projection;
 import com.google.appengine.repackaged.com.google.datastore.v1.PropertyFilter;
 
-@WebServlet(name = "PrefixCleanPost", urlPatterns = { "/prefixcleanpost?post=deletePost" })
+@WebServlet(name = "PrefixCleanPost", urlPatterns = { "/prefixcleanpost/*"} )
 public class PrefixCleanPost extends HttpServlet {
 
 	@Override
@@ -41,16 +42,35 @@ public class PrefixCleanPost extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 
-
+		StringBuffer post = request.getRequestURL();
+		String res = post.substring(38);
+		
+		response.getWriter().print("Identifiant intercepté : " + res);
+		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
-		String post = request.getParameter("deletePost");
-		Query q = new Query("Post").setFilter(new FilterPredicate("ID", FilterOperator.EQUAL, post));;
+		Entity deletePost = new Entity("Post", res);
+	
+		Key keyPost = deletePost.getKey();
+		
+		response.getWriter().print("<br><br>Clef créée : " + keyPost);
+
+		Filter keyFilter = new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.EQUAL, keyPost);
+		
+		//Query q = new Query("Post").setFilter(new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.EQUAL, keyPost));
+		
+		Query q = new Query().setAncestor(keyPost).setFilter(keyFilter);
+		
 		PreparedQuery pq = datastore.prepare(q);
 		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
+		
+		response.getWriter().print("<br><br>avant boucle for<br>");
 		for (Entity entity : result) {
+			
 			datastore.delete(entity.getKey());			
 			response.getWriter().print("<li> deleting" + entity.getKey()+"<br>");
 		}
+		response.getWriter().print("<br>après boucle for");
+
 	}
 }
