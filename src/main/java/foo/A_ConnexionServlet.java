@@ -78,6 +78,10 @@ public class A_ConnexionServlet extends HttpServlet {
 			
 			resp.sendRedirect(userService.createLoginURL(thisUrl));
 			
+			// a voir si ça ne fonctionne pas de refaire une redirection vers une autre classe java
+			// du style /connexion -> /addUser -> /view pour les premières incriptions
+			// /connexion -> /view pour ceux s'étant déjà inscrit !
+			
 		}
 	}
 
