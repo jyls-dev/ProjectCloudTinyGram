@@ -39,38 +39,43 @@ public class PrefixCleanPost extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+		String url = "http://localhost:8080/post.jsp";
+		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
-
+	
 		StringBuffer post = request.getRequestURL();
 		String res = post.substring(38);
-		
-		response.getWriter().print("Identifiant intercepté : " + res);
-		
+	
+		long idPost = Long.parseLong(res);
+	
+		response.getWriter().print("Identifiant intercepté : " + idPost);
+	
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		
-		Entity deletePost = new Entity("Post", res);
+	
+		Entity deletePost = new Entity("Post", idPost);
 	
 		Key keyPost = deletePost.getKey();
-		
+	
 		response.getWriter().print("<br><br>Clef créée : " + keyPost);
-
-		Filter keyFilter = new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.EQUAL, keyPost);
+	
+		foo.A_ConnexionServlet connect = new foo.A_ConnexionServlet();
+		String user = connect.getNicknameUser();
 		
-		//Query q = new Query("Post").setFilter(new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.EQUAL, keyPost));
-		
-		Query q = new Query().setAncestor(keyPost).setFilter(keyFilter);
-		
+		Query q = new Query("Post").setFilter(new FilterPredicate("owner", FilterOperator.EQUAL, user));;
+	
 		PreparedQuery pq = datastore.prepare(q);
 		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
-		
+	
 		response.getWriter().print("<br><br>avant boucle for<br>");
 		for (Entity entity : result) {
-			
-			datastore.delete(entity.getKey());			
-			response.getWriter().print("<li> deleting" + entity.getKey()+"<br>");
+			if (entity.getKey().equals(keyPost)) {
+				datastore.delete(entity.getKey());
+				response.getWriter().print("<li> deleting" + entity.getKey()+"<br>");
+			}
 		}
 		response.getWriter().print("<br>après boucle for");
-
+		response.sendRedirect(url);
+		
 	}
 }
