@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.repackaged.com.google.datastore.v1.CompositeFilter;
 import com.google.appengine.repackaged.com.google.datastore.v1.Projection;
 import com.google.appengine.repackaged.com.google.datastore.v1.PropertyFilter;
-import com.google.appengine.repackaged.com.google.type.proto1api.Date;
+import com.google.appengine.repackaged.org.joda.time.LocalDate;
 
 @WebServlet(name = "A_LikePost", urlPatterns = { "/likepost/*"} )
 public class A_LikePost extends HttpServlet {
@@ -53,6 +54,7 @@ public class A_LikePost extends HttpServlet {
 		Long nb_like = Long.parseLong("0");
 		String body = "";
 		String image = "";
+		Date date = null;
 	
 	
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -70,22 +72,23 @@ public class A_LikePost extends HttpServlet {
 	
 		PreparedQuery pq = datastore.prepare(q);
 		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
-	
-		response.getWriter().print("<br><br>avant boucle for<br>");
-		
+			
 		for (Entity entity : result) {
 			
 			if (entity.getKey().equals(keyPost)) {
 				
 				nb_like = (Long) entity.getProperty("likec");
 				nb_like = nb_like + 1;
+				date = (Date) entity.getProperty("date");
 				body = (String) entity.getProperty("body");
 				image = (String) entity.getProperty("url");
+				
+				response.getWriter().print("<br><br>date reçu : "+date +"<br>");			
 			}
 		}
 	
 		likePost.setProperty("body", body);
-		likePost.setProperty("date", null);
+		likePost.setProperty("date", date);
 		likePost.setProperty("likec", nb_like);
 		likePost.setProperty("owner", user);
 		likePost.setProperty("url", image);
