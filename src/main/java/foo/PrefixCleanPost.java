@@ -45,12 +45,12 @@ public class PrefixCleanPost extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
 		String post = request.getParameter("deletePost");
-		Query q = new Query("Post").setFilter(new FilterPredicate("ID", FilterOperator.EQUAL, post));;
-		PreparedQuery pq = datastore.prepare(q);
-		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
-		for (Entity entity : result) {
-			datastore.delete(entity.getKey());			
-			response.getWriter().print("<li> deleting" + entity.getKey()+"<br>");
-		}
+		//Query q = new Query("Post").setFilter(new FilterPredicate("ID", FilterOperator.EQUAL, post));
+		//PreparedQuery pq = datastore.prepare(q);
+		//List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
+		//for (Entity entity : result) {
+			//datastore.delete(entity.getKey());			
+			//response.getWriter().print("<li> deleting" + entity.getKey()+"<br>");
+		//}
 	}
 }
