@@ -40,18 +40,11 @@
 		var me = "<%=connect.getNicknameUser()%>"
 
 		var PostForm = {
-		    url: "",
-		    body: "",
+		    url: "https://dummyimage.com/320x200/000/fff&text=" + Date.now(),
+		    body: "bla bla bla \n" + Date.now(),
 		    view: function() {
 		        return m("form", {
 		                onsubmit: function(e) {
-		                    e.preventDefault()
-		                    if (url = "") {
-		                        url = "https://dummyimage.com/320x200/000/fff&text=" + Date.now()
-		                    }
-		                    if (body = "") {
-		                        body = "bla bla bla \n" + Date.now()
-		                    }
 		                    MyPost.postMessage()
 		                }
 		            },
@@ -134,6 +127,16 @@
 		                }
 		            })
 		    },
+		    
+		    deletePost: function(e) {
+		    	var url="http://localhost:1234/prefixcleanpost/" + e
+	     		window.location = url;
+		    },
+		    deleteAll: function() {
+		     	var url="http://localhost:1234/prefixcleanuser"
+		     		window.location = url;
+		    },
+		    
 		    postMessage: function() {
 		        var data = {
 		            'owner': me,
@@ -192,7 +195,9 @@
 		                        m("td", m("button", {
 		                        	class: 'btn btn-outline-danger',
 		                            onclick: function(e) {
+		                            	MyPost.deletePost(item.key.id);
 		                                console.log("del:" + item.key.id)
+		                               
 		                            }
 		                        }, "Supprimer")),
 		                        m('td', m('label', item.properties.body)),
@@ -210,6 +215,14 @@
 		                        }
 		                    },
 		                    "Accéder aux Posts suivants"),
+		                    
+		                    m('button', {
+	                        	class: 'btn btn-outline-warning',
+		                        onclick: function(e) {
+		                            MyPost.deleteAll()
+		                        }
+		                    },
+		                    "Supprimer tous les post"),
 		                    
 		                    m('button', {
 	                        	class: 'btn btn-outline-secondary',
