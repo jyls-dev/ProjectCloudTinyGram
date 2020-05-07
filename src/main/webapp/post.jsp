@@ -135,6 +135,11 @@
 		    	var url="http://localhost:8080/prefixcleanpost/" + e
 		     		window.location = url;
 		    },
+		    likePost: function(e) {
+		    	var url="http://localhost:8080/likepost/" + e
+	     		window.location = url;
+		    },
+		    
 		    postMessage: function() {
 		        var data = {
 		            'owner': me,
@@ -166,45 +171,52 @@
 		                "table": "is-striped"
 		            }, [
 		                m('tr', [
-		                    m('th', {
+		                    m("th[style='text-align:center; vertical-align:middle']", {
 		                        width: "50px"
 		                    }, "Liker le Post"),
-		                    m('th', {
+		                    m("th[style='text-align:center; vertical-align:middle']", {
 		                        width: "50px"
 		                    }, "Supprimer le Post"),
-		                    m('th', {
+		                    m("th[style='text-align:center; vertical-align:middle']", {
 		                        width: "50px"
 		                    }, "Texte de l'image"),
-		                    m('th', {
+		                    m("th[style='text-align:center; vertical-align:middle']", {
 		                        width: "50px"
-		                    }, "URL de l'image"),
-		                    m('th', {
+		                    }, "Image du Post"),
+		                    m("th[style='text-align:center; vertical-align:middle']", {
 		                        width: "50px"
-		                    }, "Nombre de like sur le Post"),
+		                    }, "Total de like sur le Post"),
 		                ]),
 		                MyPost.list.map(function(item) {
 		                    return m("tr", [
-		                        m("td", m("button", {
+		                        
+		                    	m("td[style='text-align:center; vertical-align:middle']", m("button", {
 		                        	class: 'btn btn-outline-success',
 		                            onclick: function(e) {
 		                                console.log("like:" + item.key.id)
+		                                MyPost.likePost(item.key.id);
 		                            }
 		                        }, "Liker")),
-		                        m("td", m("button", {
+		                        
+		                        m("td[style='text-align:center; vertical-align:middle']", m("button", {
 		                        	class: 'btn btn-outline-danger',
 		                            onclick: function(e) {
 		                                console.log("del:" + item.key.id)
 		                                MyPost.deletePost(item.key.id);
 		                            }
 		                        }, "Supprimer")),
-		                        m('td', m('label', item.properties.body)),
-		                        m('td', m('img', {
+		                        
+		                        m("td[style='text-align:center; vertical-align:middle']", m('label', item.properties.body)),
+		                        
+		                        m("td[style='text-align:center; vertical-align:middle']", m('img', {
 		                            class: 'is-rounded',
 		                            'src': item.properties.url
 		                        })),
-		                        m('td', m('label', item.properties.likec)),
+		                        
+		                        m("td[style='text-align:center; vertical-align:middle']", m('label', item.properties.likec)),
 		                    ])
 		                }),
+		                
 		                m('button', {
 	                        	class: 'btn btn-outline-primary',
 		                        onclick: function(e) {
@@ -212,7 +224,8 @@
 		                        }
 		                    },
 		                    "Accéder aux Posts suivants"),
-		                m('button', {
+		                
+		               m('button', {
 	                      		class: 'btn btn-outline-danger',
 		                 	    onclick: function(e) {
 		                       		MyPost.deleteAll()
