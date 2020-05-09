@@ -42,13 +42,13 @@ public class A_LikePost extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		String url = "http://localhost:1234/post.jsp";
+		String url = "/post.jsp";
 	
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 	
 		StringBuffer post = request.getRequestURL();
-		String res = post.substring(38);
+		String res = post.substring(31);
 		Boolean trouve = false;
 		long idPost = Long.parseLong(res);
 	
@@ -84,9 +84,13 @@ public class A_LikePost extends HttpServlet {
 			nom = (String) entity.getProperty("lastName");
 			ami = (ArrayList<String>) entity.getProperty("friends");
 			likes = (ArrayList<String>) entity.getProperty("LikedPost");
+			
 			if (likes != null) {
+			
 				for (int i = 0; i < likes.size(); i++) {
+				
 					if (likes.get(i).equals(res)) {
+					
 						trouve = true;
 						likes.remove(i);
 					}

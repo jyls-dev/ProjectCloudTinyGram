@@ -64,25 +64,15 @@ public class A_ConnexionServlet extends HttpServlet {
 			e.setProperty("firstName", "");
 			e.setProperty("lastName", user);
 			e.setProperty("age", 0);
-			Integer i = 10;
-
-			HashSet<String> fset = new HashSet<String>();
-			while (fset.size() < i) {
-			
-				fset.add("Jean" + i);
-				i = i - 1;
-			}
-			
-			e.setProperty("friends", fset);
-
+			e.setProperty("LikedPost", likes);
+			e.setProperty("friends", likes);
 			datastore.put(e);
 			
 			resp.sendRedirect("/view");
 			
 		} else {
 				
-			resp.sendRedirect("/adduser");
-						
+			resp.sendRedirect("/_ah/login?continue=%2Fconnexion");						
 		}
 	}
 
