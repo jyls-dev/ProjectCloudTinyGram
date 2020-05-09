@@ -68,12 +68,14 @@ public class PrefixCleanPost extends HttpServlet {
 		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
 	
 		response.getWriter().print("<br><br>avant boucle for<br>");
+		
 		for (Entity entity : result) {
 			if (entity.getKey().equals(keyPost)) {
 				datastore.delete(entity.getKey());
 				response.getWriter().print("<li> deleting" + entity.getKey()+"<br>");
 			}
 		}
+		
 		response.getWriter().print("<br>après boucle for");
 		response.sendRedirect(url);
 		
