@@ -128,15 +128,15 @@
 		            })
 		    },
 		    deleteAll: function() {
-		     	var url="http://localhost:8080/prefixcleanuser"
+		     	var url="/prefixcleanuser"
 		     		window.location = url;
 		    },
 		    deletePost: function(e) {
-		    	var url="http://localhost:8080/prefixcleanpost/" + e
+		    	var url="/prefixcleanpost/" + e
 		     		window.location = url;
 		    },
 		    likePost: function(e) {
-		    	var url="http://localhost:8080/likepost/" + e
+		    	var url="/likepost/" + e
 	     		window.location = url;
 		    },
 		    

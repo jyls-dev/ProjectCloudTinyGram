@@ -1,7 +1,9 @@
 package foo;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,38 +52,37 @@ public class A_ConnexionServlet extends HttpServlet {
 
 		resp.setContentType("text/html");
 		if (req.getUserPrincipal() != null) {		
-			/*
-			 * getNicknameUser(); getEmailUser(); req.setAttribute("nom", nom);
-			 * this.getServletContext().getRequestDispatcher("/compteView.jsp").forward(req,
-			 * resp); req.setAttribute("email", email);
-			 * this.getServletContext().getRequestDispatcher("/compteView.jsp").forward(req,
-			 * resp);
-			 */
-			resp.sendRedirect("/view");
-		} else {
-			
-			
+
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+			foo.A_ConnexionServlet connect = new foo.A_ConnexionServlet();
+			String user = connect.getNicknameUser();
+
+			ArrayList<String> likes = new ArrayList<String>();
+
+			Entity e = new Entity("Friend", user);
+			e.setProperty("firstName", "");
+			e.setProperty("lastName", user);
+			e.setProperty("age", 0);
+			Integer i = 10;
+
+			HashSet<String> fset = new HashSet<String>();
+			while (fset.size() < i) {
 			
-			//ici nickname +  email pour l'id
-			Entity user = new Entity("User", "gros test");
+				fset.add("Jean" + i);
+				i = i - 1;
+			}
 			
-			//ici getNicknameUser()  pour le nickname
-			user.setProperty("nickname", "test");
+			e.setProperty("friends", fset);
+
+			datastore.put(e);
 			
-			//ici getEmailUser()  pour l'email
-			user.setProperty("email", "test1");
+			resp.sendRedirect("/view");
 			
-			user.setProperty("creationDate", new Date());
-			
-			datastore.put(user);
-			
-			resp.sendRedirect(userService.createLoginURL(thisUrl));
-			
-			// a voir si ça ne fonctionne pas de refaire une redirection vers une autre classe java
-			// du style /connexion -> /addUser -> /view pour les premières incriptions
-			// /connexion -> /view pour ceux s'étant déjà inscrit !
-			
+		} else {
+				
+			resp.sendRedirect("/adduser");
+						
 		}
 	}
 
