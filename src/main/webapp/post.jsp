@@ -36,8 +36,8 @@
 
 		<script href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-		// for the example
-		var me = "<%=connect.getNicknameUser()%>";
+
+		var me = "<%=connect.getNicknameUser()%>"
 		
 		var PostForm = {
 		    url: "https://www.iconsdb.com/icons/preview/red/error-6-xxl.png",
@@ -94,6 +94,7 @@
 		var MyPost = {
 		    list: [],
 		    nextToken: "",
+		    color: true,
 		    loadList: function() {
 		        return m.request({
 		                method: "GET",
@@ -128,19 +129,20 @@
 		    },
 		    deleteAll: function() {
 		     	var url="/prefixcleanuser"
-		     		window.location = url;
+		     	window.location = url;
 		    },
 		    deletePost: function(e) {
 		    	var url="/prefixcleanpost/" + e
 		     		window.location = url;
 		    },
+		    showText: function() {
+				var val="prout"
+				return val;
+		    },
 		    likePost: function(e) {
 		    	var url="/likepost/" + e
 	     		window.location = url;
-		    },	
-		    ShowText: function() {
-		    	return "hey21";
-		    },   
+		    },	 
 		    postMessage: function() {
 		        var data = {
 		            'owner': me,
@@ -192,12 +194,12 @@
 		                    return m("tr", [
 		                        
 		                    	m("td[style='text-align:center; vertical-align:middle']", m("button", {
-		                        	class: 'btn btn-outline-success',
+		                        	class: 'btn btn-outline-warning',
 		                            onclick: function(e) {
 		                                console.log("like:" + item.key.id)
 		                                MyPost.likePost(item.key.id);
 		                            }
-		                        }, MyPost.ShowText())),
+		                        }, MyPost.showText())),
 		                        
 		                        m("td[style='text-align:center; vertical-align:middle']", m("button", {
 		                        	class: 'btn btn-outline-danger',

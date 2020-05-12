@@ -50,6 +50,7 @@ public class PrefixCleanUser extends HttpServlet {
 		Query q = new Query("Post").setFilter(new FilterPredicate("owner", FilterOperator.EQUAL, user));;
 		PreparedQuery pq = datastore.prepare(q);
 		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
+		
 		for (Entity entity : result) {
 			datastore.delete(entity.getKey());			
 			response.getWriter().print("<li> deleting" + entity.getKey()+"<br>");

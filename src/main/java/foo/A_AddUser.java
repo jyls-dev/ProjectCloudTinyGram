@@ -23,33 +23,34 @@ public class A_AddUser extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-	
+
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String url = "/view";
-		
+
 		Boolean trouve = false;
-		
+
 		foo.A_ConnexionServlet connect = new foo.A_ConnexionServlet();
 		String user = connect.getNicknameUser();
-		
+
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		
-		Query q = new Query("Friend").setFilter(new FilterPredicate("lastName", FilterOperator.EQUAL, user));;
-		
+
+		Query q = new Query("Friend").setFilter(new FilterPredicate("lastName", FilterOperator.EQUAL, user));
+		;
+
 		PreparedQuery pq = datastore.prepare(q);
 		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
-		
+
 		for (Entity entity : result) {
 			trouve = true;
 		}
-		
+
 		if (trouve) {
 			response.sendRedirect(url);
 		} else {
 			ArrayList<String> likes = new ArrayList<String>();
-			
+		
 			Entity e = new Entity("Friend", user);
 			e.setProperty("firstName", "");
 			e.setProperty("lastName", user);
