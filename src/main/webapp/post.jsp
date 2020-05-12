@@ -37,8 +37,7 @@
 		<script href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 		// for the example
-		var me = "<%=connect.getNicknameUser()%>"
-		var 
+		var me = "<%=connect.getNicknameUser()%>";
 		
 		var PostForm = {
 		    url: "https://www.iconsdb.com/icons/preview/red/error-6-xxl.png",

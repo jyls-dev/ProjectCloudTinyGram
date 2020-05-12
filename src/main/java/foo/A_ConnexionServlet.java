@@ -1,9 +1,6 @@
 package foo;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,13 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.Entity;
 
 
 
@@ -61,9 +53,10 @@ public class A_ConnexionServlet extends HttpServlet {
 		// Début du test
 		
 		if (connection.getConnected()) {
-		resp.sendRedirect("/adduser");
+			// Vérifie si il existe ou non
+			resp.sendRedirect("/adduser");
 		} else {
-		resp.sendRedirect(userService.createLoginURL(thisUrl));
+			resp.sendRedirect(userService.createLoginURL(thisUrl, "/adduser"));
 		}
 		
 		

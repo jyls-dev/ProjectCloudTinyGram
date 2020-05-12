@@ -17,10 +17,6 @@
     <servlet>
     	<servlet-name>A_ComptreView</servlet-name>
     	<servlet-class>foo.A_CompteViewServlet</servlet-class>
-    	<init-param>
-    		<param-name>user</param-name>
-    		<param-value></param-value>
-    	</init-param>
     </servlet>
     
 	<servlet>

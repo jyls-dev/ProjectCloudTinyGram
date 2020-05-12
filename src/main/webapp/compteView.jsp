@@ -90,14 +90,87 @@
 				</div>
 			</div>
 		</div>
-
+					
+		<div class="scrollmenu">
+		  
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">nom Utilisateur</h5>
+			    <a href="#" class="btn btn-primary">Suivre</a>
+			  </div>
+			</div>
+			
+				 
+		</div>
+		
 		</section>
 
 	</c:if>
 
 </body>
 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+</script>
+
 <style type="text/css">
+
+div.scrollmenu {
+  background-color: #;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu div {
+  display: inline-block;
+  text-align: center;
+  padding: 5px;
+  text-decoration: none;
+  width: 14rem;
+}
+
 
 /*!
  * Mobirise v4 theme (https://mobirise.com/)
