@@ -38,7 +38,8 @@
 
 		// for the example
 		var me = "<%=connect.getNicknameUser()%>"
-
+		var 
+		
 		var PostForm = {
 		    url: "https://www.iconsdb.com/icons/preview/red/error-6-xxl.png",
 		    body: "Image sans texte",
@@ -91,7 +92,6 @@
 		    }
 		}
 
-
 		var MyPost = {
 		    list: [],
 		    nextToken: "",
@@ -138,8 +138,10 @@
 		    likePost: function(e) {
 		    	var url="/likepost/" + e
 	     		window.location = url;
-		    },
-		    
+		    },	
+		    ShowText: function() {
+		    	return "hey21";
+		    },   
 		    postMessage: function() {
 		        var data = {
 		            'owner': me,
@@ -196,7 +198,7 @@
 		                                console.log("like:" + item.key.id)
 		                                MyPost.likePost(item.key.id);
 		                            }
-		                        }, "Liker")),
+		                        }, MyPost.ShowText())),
 		                        
 		                        m("td[style='text-align:center; vertical-align:middle']", m("button", {
 		                        	class: 'btn btn-outline-danger',

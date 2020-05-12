@@ -27,8 +27,7 @@
     <c:if test="<%= connect.getConnected() == false %>"> 
 
     	<%
-       RequestDispatcher rd =
-       request.getRequestDispatcher("/");
+       RequestDispatcher rd = request.getRequestDispatcher("/");
        rd.forward(request, response);
 		%>
     	

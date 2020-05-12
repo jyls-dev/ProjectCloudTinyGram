@@ -26,54 +26,75 @@ import com.google.appengine.api.datastore.Entity;
 public class A_ConnexionServlet extends HttpServlet {
 
 	UserService userService = UserServiceFactory.getUserService();
-
+	
 	String thisUrl, email, nom;
-
+	
 	public boolean getConnected() {
 		return userService.isUserLoggedIn();
 	}
-
+	
 	public String getNicknameUser() {
 		return userService.getCurrentUser().getNickname().toString();
 	}
-
+	
 	public String getEmailUser() {
 		return userService.getCurrentUser().getEmail().toString();
 	}
-
+	
 	public void getSignOut() {
 		userService.createLogoutURL(thisUrl);
-	}	
+	}
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-
+		
 		thisUrl = req.getRequestURI();
-
-		resp.setContentType("text/html");
-		if (req.getUserPrincipal() != null) {		
-
-			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-
-			foo.A_ConnexionServlet connect = new foo.A_ConnexionServlet();
-			String user = connect.getNicknameUser();
-
-			ArrayList<String> likes = new ArrayList<String>();
-
-			Entity e = new Entity("Friend", user);
-			e.setProperty("firstName", "");
-			e.setProperty("lastName", user);
-			e.setProperty("age", 0);
-			e.setProperty("LikedPost", likes);
-			e.setProperty("friends", likes);
-			datastore.put(e);
-			
-			resp.sendRedirect("/view");
-			
+		
+		foo.A_ConnexionServlet connection = new foo.A_ConnexionServlet();
+		resp.getWriter().print("valeur de la connection" + connection);
+		
+		// if (connection.getNicknameUser() != null) {
+		//String utilisateur = connection.getNicknameUser();
+		//resp.getWriter().print("valeur utilisateur" + utilisateur);
+		// }
+		
+		// Début du test
+		
+		if (connection.getConnected()) {
+		resp.sendRedirect("/adduser");
 		} else {
-				
-			resp.sendRedirect("/_ah/login?continue=%2Fconnexion");						
+		resp.sendRedirect(userService.createLoginURL(thisUrl));
 		}
+		
+		
+		// Fin du test
+		
+		
+		resp.setContentType("text/html");
+		/* if (req.getUserPrincipal() != null) {
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		
+		foo.A_ConnexionServlet connect = new foo.A_ConnexionServlet();
+		String user = connect.getNicknameUser();
+		
+		ArrayList<String> likes = new ArrayList<String>();
+		
+		Entity e = new Entity("Friend", user);
+		e.setProperty("firstName", "");
+		e.setProperty("lastName", user);
+		e.setProperty("age", 0);
+		e.setProperty("LikedPost", likes);
+		e.setProperty("friends", likes);
+		datastore.put(e);
+		
+		// resp.sendRedirect("/view");
+		
+		} else {
+		
+		// resp.sendRedirect(userService.createLoginURL(thisUrl));
+		} */
+		
 	}
 
 }
