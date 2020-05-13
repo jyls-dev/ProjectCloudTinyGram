@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="foo.A_ConnexionServlet"%>
+<%@page import="foo.A_ConnexionServlet" %>
 
 <!DOCTYPE html>
 <html>
@@ -30,123 +30,129 @@
 
 	<c:if test="<%=connect.getConnected() == true%>">
 
-		<section class="menu cid-rX0kufkANT" once="menu" id="menu1-1">
+<nav class="bg-light">
 
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container">
 
-				<div class="menu-logo">
-					<div class="navbar-brand">
-						<div class="center" style="margin-left: -80px;">
-							<span class="navbar-logo"> <a href="/view"> <img
-									src="https://zupimages.net/up/20/17/wp3h.png">
-							</a>
-							</span>
-						</div>
-					</div>
-				</div>
+		<div class="profile">
+		
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item dropdown col-md-5">
-							<div class="center" >
-								<a class="btn btn-outline-secondary my-2 my-sm-0" href="/profil">Accéder
-									à mon profil</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown col-md-10">
-							<div class="center" >
-								<a class="btn btn btn-outline-primary" href='/post.jsp'>Publier
-									un nouveau Post</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown col-md-5">
-							<div class="center" >
-								<a class="btn btn-outline-danger my-2 my-sm-0"
-									href="/deconnexion">Déconnexion</a>
-							</div>
-						</li>
+			<div class="profile-image">
 
-					</ul>
-				</div>
-			</nav>
+				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
 
-		</section>
-
-		<div class="jumbotron">
-			<h1 class="display-3">Bienvenue sur Cloud Tiny Gram !</h1>
-			<p class="lead">C'est ici que seront affichés les photos publiées
-				par l'ensemble de vos amis.</p>
-			<hr class="my-4">
-		</div>
-
-
-		<section class="mbr-section content4 cid-rX0kNznRqd" id="content4-3"></section>
-
-		<div class="container">
-			<div class="media-container-row">
-				<div class="title col-12 col-md-8">
-					<h2 class="align-center pb-3 mbr-fonts-style display-2">Liste
-						Utilisateurs à suivre</h2>
-				</div>
 			</div>
+
+			<div class="profile-user-settings">
+
+				<h1 class="profile-user-name"">4ForPersonGood</h1>
+				<br>
+				<a href="view"></a><button class="btn-success">Timeline</button></a>
+				<a href="/profil.jsp"><button class="btn-primary">Edit profil</button></a>
+				<a href="/post.jsp"><button class="btn-secondary">Publié un post</button></a>
+				<button class="btn-danger">Déconnexion</button>
+				
+
+			</div>
+
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count"></span> <a href="/mypost.jsp">164 posts</a></li>
+					<li><span class="profile-stat-count">188</span> followers</li>
+					<li><span class="profile-stat-count">206</span> following</li>
+				</ul>
+
+			</div>
+			<form>
+			<div class="input-group-append">
+				<input type="text" class="form-control" placeholder="Rechercher un utilisateur" aria-label="Recipient's username" aria-describedby="basic-addon2">
+				<button class="input-group-text btn-primary">Rechercher</button>  
+			</div>
+		</form>
+		
+		<div style="padding-top:1.0rem;">
+		<button class="input-group-text btn-primary">Suggestion Utilisateurs</button>
 		</div>
+		</div>
+		<!-- End of profile section -->
+		
+		
+
+	</div>
+	<!-- End of container -->
+	
+</nav>
+				
+
 					
 		<div class="scrollmenu">
-		  
-			<div class="card">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
+		
+		<c:forEach items="${test2}" var="item">
+    		<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">${item}</h5>
+					<a href="/addFriend/ + ${item}"  class="btn btn-primary">Suivre</a>
+				</div>
 			</div>
-			
-			<div class="card" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
-			</div>
-			<div class="card" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
-			</div>
-			<div class="card" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
-			</div>
-			<div class="card" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
-			</div>
-			<div class="card" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
-			</div>
-			<div class="card" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
-			</div>
-			<div class="card" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title">nom Utilisateur</h5>
-			    <a href="#" class="btn btn-primary">Suivre</a>
-			  </div>
-			</div>
-			
-				 
+		</c:forEach>
+​
 		</div>
 		
+		
+
+		
+		<section class="cid-rYSBWaumP1" id="image3-6">
+
+		    <figure class="mbr-figure container">
+		    
+		    
+		            <div class="image-block" style="width: 50%;">
+		            
+		            	<div class="card" style="padding-bottom : 12px;">
+		            		<b>NationalGeo</b>
+		                </div>
+		                
+		                <img src="https://i.pinimg.com/originals/08/83/c6/0883c6b224362ce503d7e4e368bb2827.jpg" width="1400" alt="">
+		                
+		                <div class='card'>
+						   <p style="padding-top : 10px;"> Trop bien le coucher de soleil </p>
+							 
+		            	</div> 
+			            
+			            <div class="input-group mb-3">
+			            <form>
+						  <div class="input-group-append">
+						    <img style="width: 10%;"src="https://s1.qwant.com/thumbr/0x380/1/f/00a178af22809027430a8001021aaec2202b92510c1cd7b109bc4ac9995655/768px-Ei-like.svg.png?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F56%2FEi-like.svg%2F768px-Ei-like.svg.png&q=0&b=1&p=0&a=1"/>  
+						  	<input type="text" class="form-control" placeholder="Écrire un commentaire" aria-label="Recipient's username" aria-describedby="basic-addon2">
+						    <button class="input-group-text btn-primary">Envoyer</button>  
+						  </div>
+						</form>
+						  
+						  <div class='card'>
+						    <div class="media">
+							  <div class="media-body">
+							    <h5 class="mt-0 mb-1" style="text-align:left;padding-top:15px;">FrançoisChv</h5>
+							   Wallah trop beau ici
+							  </div>
+							</div>
+							<div class="media">
+							  <div class="media-body">
+							    <h5 class="mt-0 mb-1" style="text-align:left;padding-top:15px;">RemiRemaud44</h5>
+							   Magnifik
+							  </div>
+							</div>
+							 
+		            	</div>  
+		            	 <button class="btn btn-default btn-block"style="text-align:center;"><b>. . .</b> </button>
+		            		             	
+		            </div>
+		           
+	         
+		    </figure>
 		</section>
+		
+		
 
 	</c:if>
 
@@ -156,6 +162,113 @@
 </script>
 
 <style type="text/css">
+
+.profile {
+    padding: 5rem 0;
+}
+
+.profile::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.profile-image {
+    float: left;
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.profile-image img {
+    border-radius: 50%;
+}
+
+.profile-user-settings,
+.profile-stats,
+.profile-bio {
+    float: left;
+    width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+    margin-top: 1.1rem;
+}
+
+.profile-user-name {
+    display: inline-block;
+    font-size: 3.2rem;
+    font-weight: 300;
+}
+
+.profile-edit-btn {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 0 2.4rem;
+    margin-left: 2rem;
+}
+
+.profile-settings-btn {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.profile-stats {
+    margin-top: 1rem;
+}
+
+.profile-stats li {
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+    margin-right: 0;
+}
+
+.profile-bio {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+    font-weight: 600;
+}
+
+
+
+.cid-rYSBWaumP1 {
+  background: #ffffff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.cid-rYSBWaumP1 .image-block {
+  margin: auto;
+}
+.cid-rYSBWaumP1 figcaption {
+  position: relative;
+}
+.cid-rYSBWaumP1 figcaption div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .cid-rYSBWaumP1 .image-block {
+    width: 100% !important;
+  }
+}
 
 div.scrollmenu {
   background-color: #;
