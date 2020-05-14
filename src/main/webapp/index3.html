@@ -8,6 +8,8 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
 
@@ -58,7 +60,7 @@ var DiceView={
 			m('label',{class:'label'},"Dice 1:"+DiceGame.d1),
 			m('label',{class:'label'},"Dice 2:"+DiceGame.d2),
 			m('button',{
-				class: 'button is-link',
+				class: 'btn-success',
 				onclick: function(e) {DiceGame.play()}
 			    },"play"),
 		])

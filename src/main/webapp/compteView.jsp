@@ -130,17 +130,19 @@
 						</form>
 						  
 						  <div class='card'>
+						  <div class="card-body">
 						    <div class="media">
 							  <div class="media-body">
-							    <h5 class="mt-0 mb-1" style="text-align:left;padding-top:15px;">FrançoisChv</h5>
-							   Wallah trop beau ici
+							    <h5 class="mt-0 mb-1" style="padding-top:15px;">FrançoisChv</h5>
+							   <p>Wallah trop bea
 							  </div>
 							</div>
 							<div class="media">
 							  <div class="media-body">
-							    <h5 class="mt-0 mb-1" style="text-align:left;padding-top:15px;">RemiRemaud44</h5>
-							   Magnifik
+							    <h5 class="mt-0 mb-1"style="padding-top:15px;">RemiRemaud4dddd4</h5>
+							   Mag
 							  </div>
+							</div>
 							</div>
 							 
 		            	</div>  

@@ -21,6 +21,7 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 //With @WebServlet annotation the webapp/WEB-INF/web.xml is no longer required.
 @WebServlet(name = "UserCompteView", description = "Vue de l'utilisateur post", urlPatterns = "/view")
+
 public class A_CompteViewServlet extends HttpServlet {
 
 	@Override
@@ -55,30 +56,45 @@ public class A_CompteViewServlet extends HttpServlet {
 		List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
 		
 		ArrayList<String> listesUser = new ArrayList<String>();
-		
-		for (Entity entity : result) {
-			if (compteur <= 20) {
-				for  (i = 0; i < FriendUser.size(); i++) { // Faire un while à la place
-					if (entity.getProperty("lastName").equals(FriendUser.get(i))) {
-						trouve = true;
+		if (FriendUser != null) {
+			for (Entity entity : result) {
+				if (compteur <= 20) {
+					for (i = 0; i < FriendUser.size(); i++) { // Faire un while à la place
+						if (entity.getProperty("lastName").equals(FriendUser.get(i))) {
+							trouve = true;
+						}
+					}
+					if (trouve == false) {
+						compteur = compteur + 1;
+						listesUser.add((String) entity.getProperty("lastName"));
 					} 
+					trouve = false;
 				}
-				if (trouve == false) {
+			}
+		} else {
+			for (Entity entity : result) {
+				if (compteur <= 20) {
 					compteur = compteur + 1;
 					listesUser.add((String) entity.getProperty("lastName"));
-				} 
-				trouve = false;				
+				}
+			}
 		}
-		}
+
 			
 			
+
 		req.setAttribute("test2", listesUser);
 		this.getServletContext().getRequestDispatcher("/compteView.jsp").forward(req, resp);
 		//response.sendRedirect("/view");
-	
-​
-	}
 
+		/*
+		 * String message = "Transmission de variables : OK !"; req.setAttribute("test",
+		 * message);
+		 * this.getServletContext().getRequestDispatcher("/compteView.jsp").forward(req,
+		 * resp);
+		 */
+
+	}
 
 }
 
