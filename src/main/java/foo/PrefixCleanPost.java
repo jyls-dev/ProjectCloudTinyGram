@@ -42,7 +42,7 @@ public class PrefixCleanPost extends HttpServlet {
 	response.setContentType("text/html");
 	response.setCharacterEncoding("UTF-8");
 	
-	String url = "http://tidy-computing-268913.appspot.com/post.jsp";
+	String url = "/post.jsp";
 
 	StringBuffer post = request.getRequestURL();
 	String res = post.substring(38);

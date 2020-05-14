@@ -42,7 +42,7 @@ public class PrefixCleanUser extends HttpServlet {
 	response.setContentType("text/html");
 	response.setCharacterEncoding("UTF-8");
 	
-	String url = "http://localhost:1234/post.jsp";
+	String url = "/post.jsp";
 	
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	
