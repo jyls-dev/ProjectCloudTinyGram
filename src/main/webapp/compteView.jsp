@@ -13,6 +13,10 @@
 	content="width=device-width, initial-scale=1, minimum-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
 </head>
 <body>
 
@@ -69,27 +73,16 @@
 				<input type="text" class="form-control" placeholder="Rechercher un utilisateur" aria-label="Recipient's username" aria-describedby="basic-addon2">
 				<button class="input-group-text btn-primary">Rechercher</button>  
 			</div>
-		</form>
+		</form>		
 		
 		<div style="padding-top:1.0rem;">
-		<button class="input-group-text btn-primary">Suggestion Utilisateurs</button>
+			<button class="input-group-text btn-primary" data-toggle="collapse" data-target="#demo">Suggestion Utilisateurs</button>
 		</div>
-		</div>
-		<!-- End of profile section -->
 		
-		
-
-	</div>
-	<!-- End of container -->
-	
-</nav>
-				
-
-					
 		<div class="scrollmenu">
 		
 		<c:forEach items="${test2}" var="item">
-    		<div class="card">
+    		<div class="card" id="demo" class="collapse">
 				<div class="card-body">
 					<h5 class="card-title">${item}</h5>
 					<a href="/addFriend/ + ${item}"  class="btn btn-primary">Suivre</a>
@@ -99,8 +92,17 @@
 ​
 		</div>
 		
+		</div>
+		
+</div>
+		<!-- End of profile section -->
+		
 		
 
+	</div>
+	<!-- End of container -->
+	
+</nav>
 		
 		<section class="cid-rYSBWaumP1" id="image3-6">
 
@@ -2892,4 +2894,3 @@ html, body {
 </style>
 
 </html>
-
