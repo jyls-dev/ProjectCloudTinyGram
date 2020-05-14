@@ -37,12 +37,18 @@ public class FriendServlet extends HttpServlet {
 
 		Random r = new Random();
 
+		foo.A_ConnexionServlet connect = new foo.A_ConnexionServlet();
+		String user = connect.getNicknameUser();
+		
+		ArrayList<String> likes = new ArrayList<String>();
+		
 		// Create users
 		for (int i = 0; i < 500; i++) {
-			Entity e = new Entity("Friend", "f" + i);
+			Entity e = new Entity("Friend", user);
 			e.setProperty("firstName", "first" + i);
 			e.setProperty("lastName", "last" + i);
 			e.setProperty("age",r.nextInt(100) + 1);
+			e.setProperty("LikedPost", likes);
 
 			// Create user friends
 			HashSet<String> fset = new HashSet<String>();

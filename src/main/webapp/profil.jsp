@@ -1,23 +1,31 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="foo.A_ConnexionServlet" %>
+<%@page import="foo.A_ConnexionServlet"%>
+<%@page import="foo.A_InfoUser"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>View Compte</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=1">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<meta charset="utf-8" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mon profil</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 </head>
 <body>
 
 	<jsp:useBean id="connect" scope="request"
 		class="foo.A_ConnexionServlet" />
+		
+		<jsp:useBean id="infos" scope="request"
+		class="foo.A_InfoUser" />
 
 	<c:if test="<%=connect.getConnected() == false%>">
 
@@ -30,262 +38,384 @@
 
 	<c:if test="<%=connect.getConnected() == true%>">
 
-<nav class="bg-light">
+		<section class="menu cid-rX0kufkANT" once="menu" id="menu1-1">
 
-	<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-		<div class="profile">
-		
+				<div class="menu-logo">
+					<div class="navbar-brand">
+						<div class="center" style="margin-left: -80px;">
+							<span class="navbar-logo"> <a href="/view"> <img
+									src="https://zupimages.net/up/20/17/wp3h.png">
+							</a>
+							</span>
+						</div>
+					</div>
+				</div>
 
-			<div class="profile-image">
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item dropdown col-md-5">
+							<div class="center" >
+								<a class="btn btn-outline-secondary my-2 my-sm-0 disabled active" href="/profil">Accéder
+									à mon profil</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown col-md-10">
+							<div class="center" >
+								<a class="btn btn btn-outline-primary" href='/post.jsp'>Publier
+									un nouveau Post</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown col-md-5">
+							<div class="center" >
+								<a class="btn btn-outline-danger my-2 my-sm-0"
+									href="/deconnexion">Déconnexion</a>
+							</div>
+						</li>
 
-				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+					</ul>
+				</div>
+			</nav>
 
-			</div>
+		</section>
 
-			<div class="profile-user-settings">
 
-				<h1 class="profile-user-name"">4ForPersonGood</h1>
-				<br>
-				<a href="view"></a><button class="btn-success">Timeline</button></a>
-				<a href="/profil.jsp"><button class="btn-primary">Edit profil</button></a>
-				<a href="/post.jsp"><button class="btn-secondary">Publié un post</button></a>
-				<button class="btn-danger">Déconnexion</button>
-				
+		<section class="mbr-section content4 cid-rX0kNznRqd" id="content4-2"></section>
 
-			</div>
-
-			<div class="profile-stats">
-
-				<ul>
-					<li><span class="profile-stat-count"></span> <a href="/mypost.jsp">164 posts</a></li>
-					<li><span class="profile-stat-count">188</span> followers</li>
-					<li><span class="profile-stat-count">206</span> following</li>
-				</ul>
-
-			</div>
-			<form>
-			<div class="input-group-append">
-				<input type="text" class="form-control" placeholder="Rechercher un utilisateur" aria-label="Recipient's username" aria-describedby="basic-addon2">
-				<button class="input-group-text btn-primary">Rechercher</button>  
-			</div>
-		</form>
-		
-		<div style="padding-top:1.0rem;">
-		<button class="input-group-text btn-primary">Suggestion Utilisateurs</button>
-		</div>
-		</div>
-		<!-- End of profile section -->
-		
-		
-
-	</div>
-	<!-- End of container -->
-	
-</nav>
-				
-
-					
-		<div class="scrollmenu">
-		
-		<c:forEach items="${test2}" var="item">
-    		<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">${item}</h5>
-					<a href="/addFriend/ + ${item}"  class="btn btn-primary">Suivre</a>
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h1 class="card-title">
+								Mes informations
+								</h1>
+								<p class="card-text">C'est ici que vous retrouverez
+									l'ensemble des informations liées à votre compte.</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</c:forEach>
-​
+		</div>
+
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Mon adresse mail
+								</h5>
+								<p class="card-text"><%=connect.getEmailUser()%></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Mon pseudo Cloud Tiny Gram
+								</h5>
+								<p class="card-text"><%=connect.getNicknameUser()%></p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Le nombre de personnes que je suit
+								</h5>
+								<p class="card-text"><%=infos.getNbFollow() %></p>
+								<a class="btn btn btn-outline-primary" href='/listfriend'>Voir la liste de mes Follows</a>
+								
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		
-
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Le nombre de personnes qui me suivent
+								</h5>
+								<p class="card-text"><%=infos.getNbFollower() %></p>
+								<a class="btn btn btn-outline-primary" href='/listfollow'>Voir les gens qui me suivent</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		
-		<section class="cid-rYSBWaumP1" id="image3-6">
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Le nombre de post que j'ai publié
+								</h5>
+								<p class="card-text"><%=infos.getNbPost() %></p>
+								<a class="btn btn btn-outline-primary" href='/post.jsp'>Accéder à mes posts</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-		    <figure class="mbr-figure container">
-		    
-		    
-		            <div class="image-block" style="width: 50%;">
-		            
-		            	<div class="card" style="padding-bottom : 12px;">
-		            		<b>NationalGeo</b>
-		                </div>
-		                
-		                <img src="https://i.pinimg.com/originals/08/83/c6/0883c6b224362ce503d7e4e368bb2827.jpg" width="1400" alt="">
-		                
-		                <div class='card'>
-						   <p style="padding-top : 10px;"> Trop bien le coucher de soleil </p>
-							 
-		            	</div> 
-			            
-			            <div class="input-group mb-3">
-			            <form>
-						  <div class="input-group-append">
-						    <img style="width: 10%;"src="https://s1.qwant.com/thumbr/0x380/1/f/00a178af22809027430a8001021aaec2202b92510c1cd7b109bc4ac9995655/768px-Ei-like.svg.png?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F56%2FEi-like.svg%2F768px-Ei-like.svg.png&q=0&b=1&p=0&a=1"/>  
-						  	<input type="text" class="form-control" placeholder="Écrire un commentaire" aria-label="Recipient's username" aria-describedby="basic-addon2">
-						    <button class="input-group-text btn-primary">Envoyer</button>  
-						  </div>
-						</form>
-						  
-						  <div class='card'>
-						  <div class="card-body">
-						    <div class="media">
-							  <div class="media-body">
-							    <h5 class="mt-0 mb-1" style="padding-top:15px;">FrançoisChv</h5>
-							   <p>Wallah trop bea
-							  </div>
-							</div>
-							<div class="media">
-							  <div class="media-body">
-							    <h5 class="mt-0 mb-1"style="padding-top:15px;">RemiRemaud4dddd4</h5>
-							   Mag
-							  </div>
-							</div>
-							</div>
-							 
-		            	</div>  
-		            	 <button class="btn btn-default btn-block"style="text-align:center;"><b>. . .</b> </button>
-		            		             	
-		            </div>
-		           
-	         
-		    </figure>
+		</section>
+
+		<section class="mbr-section content4 cid-rX0kNznRqd" id="content4-2"></section>
+
+		<div class="container">
+			<div class="media-container-row">
+				<div class="title col-12 col-md-8">
+					<div class="card border-primary mb-3" style="max-width: 200rem;">
+						<div class="card-body">
+							<h1 class="card-title">
+								Mes Posts
+								</h1>
+								<p class="card-text">C'est ici que vous retrouverez
+									l'ensemble des postes que vous avez publié.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		</section>
 		
-		
+		<script>
+
+		// for the example
+		var me = "<%=connect.getNicknameUser()%>"
+
+		var PostForm = {
+		    url: "",
+		    body: "",
+		    view: function() {
+		        return m("form", {
+		                onsubmit: function(e) {
+		                    e.preventDefault()
+		                    if (url = "") {
+		                        url = "https://dummyimage.com/320x200/000/fff&text=" + Date.now()
+		                    }
+		                    if (body = "") {
+		                        body = "bla bla bla \n" + Date.now()
+		                    }
+		                    MyPost.postMessage()
+		                }
+		            },
+		            [
+		                m('div', {
+		                    class: 'field'
+		                }, [
+		                    m("label", {
+		                        class: 'label'
+		                    }, "URL"),
+		                    m('div', {
+		                        class: 'control'
+		                    }, m("input[type=text]", {
+		                        class: 'input is-rounded',
+		                        placeholder: "Your url",
+		                        oninput: function(e) {
+		                            PostForm.url = e.target.value
+		                        }
+		                    })),
+		                    // m("img",{"src":this.url}),
+		                ]),
+		                m('div', {
+		                    class: 'field'
+		                }, [
+		                    m("label", {
+		                        class: 'label'
+		                    }, "Body"),
+		                    m('div', {
+		                        class: 'control'
+		                    }, m("input[type=textarea]", {
+		                        class: 'textarea',
+		                        placeholder: "your text",
+		                        oninput: function(e) {
+		                            PostForm.body = e.target.value
+		                        }
+		                    })),
+		                ]),
+		                m('div', {
+		                    class: 'control'
+		                }, m("button[type=submit]", {
+		                    class: 'button is-link'
+		                }, "Post")),
+		            ])
+		    }
+		}
+
+
+		var MyPost = {
+		    list: [],
+		    nextToken: "",
+		    loadList: function() {
+		        return m.request({
+		                method: "GET",
+		                url: "_ah/api/myApi/v1/mypost/" + me
+		            })
+		            .then(function(result) {
+		                console.log("got:", result)
+		                MyPost.list = result.items
+		                if ('nextPageToken' in result) {
+		                    MyPost.nextToken = result.nextPageToken
+		                } else {
+		                    MyPost.nextToken = ""
+		                }
+		            })
+		    },
+		    next: function() {
+		        return m.request({
+		                method: "GET",
+		                url: "_ah/api/myApi/v1/mypost/" + me + "?next=" + MyPost.nextToken
+		            })
+		            .then(function(result) {
+		                console.log("got:", result)
+		                result.items.map(function(item) {
+		                    MyPost.list.push(item)
+		                })
+		                if ('nextPageToken' in result) {
+		                    MyPost.nextToken = result.nextPageToken
+		                } else {
+		                    MyPost.nextToken = ""
+		                }
+		            })
+		    },
+		    postMessage: function() {
+		        var data = {
+		            'owner': me,
+		            'url': PostForm.url,
+		            'body': PostForm.body
+		        }
+		        console.log("post:" + data)
+		        return m.request({
+		                method: "POST",
+		                url: "_ah/api/myApi/v1/postMessage",
+		                params: data,
+		            })
+		            .then(function(result) {
+		                console.log("got:", result),
+		                    MyPost.loadList()
+		            })
+		    }
+		}
+
+		var PostView = {
+		    oninit: MyPost.loadList,
+		    view: function() {
+		        return m('div', [
+		            m('div', {
+		                class: 'subtitle'
+		            }, "My Posts"),
+		            m('table', {
+		                class: 'table is-striped',
+		                "table": "is-striped"
+		            }, [
+		                m('tr', [
+		                    m('th', {
+		                        width: "50px"
+		                    }, "like"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "del"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "Bodys"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "Urls"),
+		                    m('th', {
+		                        width: "50px"
+		                    }, "Like"),
+		                ]),
+		                MyPost.list.map(function(item) {
+		                    return m("tr", [
+		                        m("td", m("button", {
+		                            onclick: function(e) {
+		                                console.log("like:" + item.key.id)
+		                            }
+		                        }, "like")),
+		                        m("td", m("button", {
+		                            onclick: function(e) {
+		                                console.log("del:" + item.key.id)
+		                            }
+		                        }, "del")),
+		                        m('td', m('label', item.properties.body)),
+		                        m('td', m('img', {
+		                            class: 'is-rounded',
+		                            'src': item.properties.url
+		                        })),
+		                        m('td', m('label', item.properties.likec)),
+		                    ])
+		                }),
+		                // m("div", isError ? "An error occurred" : "Saved"),
+		                m('button', {
+		                        class: 'button is-link',
+		                        onclick: function(e) {
+		                            MyPost.next()
+		                        }
+		                    },
+		                    "Next"),
+		            ])
+		        ])
+		    }
+		}
+
+		var Hello = {
+		    view: function() {
+		        return m('div', {
+		            class: 'container'
+		        }, [
+		            m("h1", {
+		                class: 'title'
+		            }, 'The TinyGram Post'),
+		            m('div', {
+		                class: 'tile is-ancestor'
+		            }, [
+		                m("div", {
+		                    class: 'tile'
+		                }, m('div', {
+		                    class: 'tile is-child box'
+		                }, m(PostForm))),
+		                m("div", {
+		                    class: 'tile'
+		                }, m('div', {
+		                    class: 'tile is-child box'
+		                }, m(PostView))),
+		            ])
+		        ])
+		    }
+		}
+
+
+		m.mount(document.body, Hello)
+
+</script>
 
 	</c:if>
 
 </body>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
-</script>
-
 <style type="text/css">
-
-.profile {
-    padding: 5rem 0;
-}
-
-.profile::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.profile-image {
-    float: left;
-    width: calc(33.333% - 1rem);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 3rem;
-}
-
-.profile-image img {
-    border-radius: 50%;
-}
-
-.profile-user-settings,
-.profile-stats,
-.profile-bio {
-    float: left;
-    width: calc(66.666% - 2rem);
-}
-
-.profile-user-settings {
-    margin-top: 1.1rem;
-}
-
-.profile-user-name {
-    display: inline-block;
-    font-size: 3.2rem;
-    font-weight: 300;
-}
-
-.profile-edit-btn {
-    font-size: 1.4rem;
-    line-height: 1.8;
-    border: 0.1rem solid #dbdbdb;
-    border-radius: 0.3rem;
-    padding: 0 2.4rem;
-    margin-left: 2rem;
-}
-
-.profile-settings-btn {
-    font-size: 2rem;
-    margin-left: 1rem;
-}
-
-.profile-stats {
-    margin-top: 1rem;
-}
-
-.profile-stats li {
-    display: inline-block;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    margin-right: 4rem;
-    cursor: pointer;
-}
-
-.profile-stats li:last-of-type {
-    margin-right: 0;
-}
-
-.profile-bio {
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-top: 2.3rem;
-}
-
-.profile-real-name,
-.profile-stat-count,
-.profile-edit-btn {
-    font-weight: 600;
-}
-
-
-
-.cid-rYSBWaumP1 {
-  background: #ffffff;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-.cid-rYSBWaumP1 .image-block {
-  margin: auto;
-}
-.cid-rYSBWaumP1 figcaption {
-  position: relative;
-}
-.cid-rYSBWaumP1 figcaption div {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-@media (max-width: 768px) {
-  .cid-rYSBWaumP1 .image-block {
-    width: 100% !important;
-  }
-}
-
-div.scrollmenu {
-  background-color: #;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-div.scrollmenu div {
-  display: inline-block;
-  text-align: center;
-  padding: 5px;
-  text-decoration: none;
-  width: 14rem;
-}
-
 
 /*!
  * Mobirise v4 theme (https://mobirise.com/)
@@ -2890,6 +3020,7 @@ html, body {
 	color: #767676;
 }
 </style>
+
 
 </html>
 
