@@ -80,7 +80,28 @@ mvn appengine:deploy
 ```
 
 # Webandcloud
-""""
 Réalisation d'une application web dont les fonctionnalités sont similaires au réseau sociaux, comme par exemple Instagram.
 
 ## Debut
+Les conditions d'installation du projet concernent simplement l'enregistrement du projet de manière local sur le poste.
+Télécharger le fichier zip (dans le cas présent, le fichier s'intitule "CloudTinyGram"), puis le dézipper dans le dossier comme indiqué ci-dessous :
+```
+C:\Users\adem\Documents\GitHub\CloudTinyGram
+```
+
+## Conditions préalables
+Il faut au préalable avoir installer éclipse et s'assurer que Maven a accès au web. 
+Et notamment s'offir un compte Google Cloud. 
+
+## L'installation
+Une fois le projet enregistré en local, il faudra lancer eclipse et suivre les instructions suivantes afin de déployer le projet :
+- il est possible de le déployer comme ceci :
+```
+Clique droit sur le projet, ensuite faire
+Deploy to App Engine standard
+```
+- il est éventuellement possible de le déployer de manière local :
+```
+Clique droit sur le projet, ensuite faire
+Run As > App Engine
+```
