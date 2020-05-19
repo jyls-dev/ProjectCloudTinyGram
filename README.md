@@ -79,4 +79,8 @@ gcloud endpoints services deploy target/openapi-docs/openapi.json
 mvn appengine:deploy
 ```
 
-# webandcloud
+# Webandcloud
+""""
+Réalisation d'une application web dont les fonctionnalités sont similaires au réseau sociaux, comme par exemple Instagram.
+
+## Debut
