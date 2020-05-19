@@ -121,8 +121,8 @@ Menu de navigation > Datastore > Entités
 ```
 
 ## Construit avec
-* [Maven] (https://maven.apache.org/) - Gestion des dépendances
-* [Eclipse] (https://www.eclipse.org/) - Environnement de production de logiciels libre
+* [Maven] (https://maven.apache.org/) - Gestion des dépendance
+* [Eclipse] (https://www.eclipse.org/) - Environnement de production de logiciels libres
 * [Google Cloud Platform] (https://console.cloud.google.com/) - hébergement de sites et d'application
 
 ## Versioning
