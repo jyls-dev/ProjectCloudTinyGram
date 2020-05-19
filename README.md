@@ -105,3 +105,8 @@ Deploy to App Engine standard
 Clique droit sur le projet, ensuite faire
 Run As > App Engine
 ```
+
+## Exécution des tests
+Les tests s'effectuent de façon manuels. 
+Une fois le projet déployé, il convient de se connecter avec Google. 
+L'utilisateur est dirigé  
