@@ -109,4 +109,34 @@ Run As > App Engine
 ## Exécution des tests
 Les tests s'effectuent de façon manuels. 
 Une fois le projet déployé, il convient de se connecter avec Google. 
-L'utilisateur est dirigé  
+L'utilisateur est alors dirigé vers sa page de profil.
+
+## Déploiement
+Le déploiement s'effectue sur le navigateur. 
+
+## Base de données
+L'ensemble des données sont administrés par Google Cloud Platform. Il est donc possible d'accéder aux divers contenues.
+```
+Menu de navigation > Datastore > Entités
+```
+
+## Construit avec
+* [Maven] (https://maven.apache.org/) - Gestion des dépendances
+* [Eclipse] (https://www.eclipse.org/) - Environnement de production de logiciels libre
+* [Google Cloud Platform] (https://console.cloud.google.com/) - hébergement de sites et d'application
+
+## Versioning
+Nous utilisons Github pour le versioning. 
+
+## Auteurs
+* Rémi Remaud - développeur
+* François Chauveau - développeur
+* Jules Vannini - développeur
+* David Oztoprak - développeur
+
+## Licence
+Pas de licence spécifique pour ce projet.
+
+## Remerciements 
+* Toute les personnes qui ont participé à la conception de ce projet
+* Pascal Molli 
